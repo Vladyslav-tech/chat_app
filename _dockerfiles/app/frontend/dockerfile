@@ -1,0 +1,14 @@
+FROM node:16
+
+WORKDIR /code
+
+RUN pwd
+
+COPY ./frontend/app/package.json /code/package.json
+COPY ./frontend/app/package-lock.json /code/package-lock.json
+COPY ./frontend/app /code
+
+RUN npm install
+RUN npm run build
+
+CMD ["npm", "start"]
